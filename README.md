@@ -22,11 +22,42 @@ implementation 'com.github.manuelarte.spring-utils:{latest-version}'
 
 ## 🤓 Overview
 
-Some helpful validations and utilities to be used in your [Spring Boot][spring-boot] application. 
+Some helpful validations and utilities to be used in your [Spring Boot](https://spring.io/projects/spring-boot) application. 
 
 Check the features list below.
 
 ## 📋 Features
+
+Below you can find a description on the available features in this library, in case you want to see them in a real project check the [Example Project](#example-project) section.
+
+### CrupRepository
+
+Extension for the [Spring Data Repository](https://docs.spring.io/spring-data/jpa/reference/index.html) to allow **partial updates**.
+
+#### Prerequisites
+
+- The entity needs to have a single field with `@Id` attribute
+
+#### Example
+
+```java
+@Entity
+public class DocumentEntity {
+    @Id
+    private final Long id;
+    private final String name;
+    private final String surname;
+    ...
+}
+
+@Repository
+public interface DocumentEntityRepository extends CrpudRepository<DocumentEntity, Long> {}
+
+final DocumentEntity saved = repository.save(new DocumentEntity(1, "Manuel", "D"));
+final DocumentEntity partialUpdate = new DocumentEntity(null, null, "Doncel");
+final DocumentEntity partialUpdated = repository.partialUpdate(1, partialUpdate);
+// Result id:1, name: Manuel, surname: Doncel
+```
 
 ### @Exists Constraint
 
@@ -144,18 +175,12 @@ By default, the constraint will check the 1st and 2nd parameters indexes. In cas
 
 where `x` and `y` are the indexes of the parameters to be checked.
 
-### CrupRepository
+## Example Project
 
-Extension for the [Spring Data Repository](https://docs.spring.io/spring-data/jpa/reference/index.html) to allow **partial updates**.
-
-#### Prerequisites
-
-- The entity needs to have a single field with `@Id` attribute
+In the [_example](_example) folder there is a Spring Boot project showing the features available in this library.
 
 ## 🤝 Contributing
 Feel free to create a PR or suggest improvements or ideas.
-
-[spring-boot](https://spring.io/projects/spring-boot)
 
 ## Publish
 
