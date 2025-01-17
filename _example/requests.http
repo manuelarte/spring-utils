@@ -1,0 +1,45 @@
+### Getting an entity by id that does not exists @Exists validator triggered
+GET http://localhost:8080/entity-demo/1
+
+### Updating an entity by id that does not exists @Exists validator triggered
+POST http://localhost:8080/entity-demo/1
+Content-Type: application/json
+
+{
+  "name": "Manuel",
+  "surname": "Doncel"
+}
+
+### Saving an entity, surname missing, so Update.class group constraint triggered
+POST http://localhost:8080/entity-demo
+Content-Type: application/json
+
+{
+  "name": "Manuel"
+}
+
+### Saving an entity
+POST http://localhost:8080/entity-demo
+Content-Type: application/json
+
+{
+  "name": "Manuel",
+  "surname": "Doncel"
+}
+
+### Partial Update an entity, PartialUpdate.class group constraint triggered because id is present in the body
+PATCH http://localhost:8080/entity-demo/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "surname": "Doncel Martos"
+}
+
+### Partial Update an entity
+PATCH http://localhost:8080/entity-demo/1
+Content-Type: application/json
+
+{
+  "surname": "Doncel Martos"
+}

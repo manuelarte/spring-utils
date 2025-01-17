@@ -22,7 +22,7 @@ implementation 'com.github.manuelarte.spring-utils:{latest-version}'
 
 ## 🤓 Overview
 
-Some helpful validations and utilities to be used in your [Spring Boot][spring-boot] application. 
+Some helpful validations and utilities to be used in your [Spring Boot](https://spring.io/projects/spring-boot) application. 
 
 Check the features list below.
 
@@ -152,7 +152,9 @@ Extension for the [Spring Data Repository](https://docs.spring.io/spring-data/jp
 
 - The entity needs to have a single field with `@Id` attribute
 
+## Example Project
+
+In the [_example](_example) folder there is a Spring Boot project showing the features available in this library.
+
 ## 🤝 Contributing
 Feel free to create a PR or suggest improvements or ideas.
-
-[spring-boot](https://spring.io/projects/spring-boot)
