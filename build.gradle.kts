@@ -9,7 +9,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.manuelarte"
+group = "io.github.manuelarte"
 version = "0.0.1"
 
 java {
