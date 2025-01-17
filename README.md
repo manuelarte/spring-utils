@@ -35,6 +35,7 @@ This allows you to abstract the validation logic from the business logic.
 
 - The constraint validations need to be executed, for example annotating your Controller with `@Validated`.
 - The entity/document that is going to be checked needs to have a `@Repository` bean.
+- The following dependency is needed: `implementation("org.springframework.boot:spring-boot-starter-validation")`
 
 #### Example
 
@@ -81,6 +82,7 @@ public class OneEntityDto {
 
 }
 
+@RestController
 @Validated
 public class OneEntityController {
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)

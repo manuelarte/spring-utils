@@ -1,12 +1,12 @@
 package com.github.manuelarte.springutils.validators;
 
 import com.github.manuelarte.springutils.constraints.Exists;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.Payload;
+import jakarta.validation.groups.Default;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.repository.CrudRepository;
 
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.Payload;
-import javax.validation.groups.Default;
 import java.lang.annotation.Annotation;
 import java.util.Collections;
 import java.util.Optional;
