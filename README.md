@@ -1,6 +1,6 @@
 # Spring-Utils library
 
-## 📝 Installation
+## ⬇️ Installation
 
 Add the following dependency in your project to start using the features described below.
 
@@ -20,13 +20,13 @@ implementation 'com.github.manuelarte.spring-utils:{latest-version}'
 ```
 </details>
 
-## Overview
+## 🤓 Overview
 
 Some helpful validations and utilities to be used in your [Spring Boot][spring-boot] application. 
 
 Check the features list below.
 
-## Features
+## 📋 Features
 
 ### @Exists Constraint
 
