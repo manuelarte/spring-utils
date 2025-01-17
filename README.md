@@ -181,3 +181,9 @@ In the [_example](_example) folder there is a Spring Boot project showing the fe
 
 ## 🤝 Contributing
 Feel free to create a PR or suggest improvements or ideas.
+
+## Publish
+
+To publish a new version use:
+
+> ./gradlew publish
