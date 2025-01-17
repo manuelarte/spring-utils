@@ -1,7 +1,11 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     java
+    id("java-library")
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
+    id("maven-publish")
 }
 
 group = "com.github.manuelarte"
@@ -44,4 +48,50 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.getByName<BootJar>("bootJar") {
+    enabled = false
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = true
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = groupId
+            artifactId = artifactId
+            version = version
+
+            from(components["java"])
+        }
+
+        create<MavenPublication>("mavenJava") {
+            pom {
+                name = "Spring-Utils"
+                description = "Spring Boot utility features"
+                url = "https://github.com/manuelarte/spring-utils"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "manuelarte"
+                        name = "Manuel Doncel Martos"
+                        email = "manueldoncelmartos@gmail.com"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/manuelarte/spring-utils.git"
+                    developerConnection = "scm:git:ssh://github.com/manuelarte/spring-utils.git"
+                    url = "https://github.com/manuelarte/spring-utils/"
+                }
+            }
+        }
+    }
 }
