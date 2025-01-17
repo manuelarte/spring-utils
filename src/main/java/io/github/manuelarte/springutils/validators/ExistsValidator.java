@@ -24,6 +24,7 @@ public class ExistsValidator implements ConstraintValidator<Exists, Object> {
   private CrudRepository<Object, Object> repository;
 
   @Override
+  @SuppressWarnings("unchecked")
   public void initialize(@NotNull final Exists exists) {
     this.repository = (CrudRepository<Object, Object>) repositories.stream().filter(it -> Objects
                     .requireNonNull(ResolvableType.forClass(it.getClass())

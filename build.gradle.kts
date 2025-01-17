@@ -1,3 +1,4 @@
+import org.jreleaser.model.Active
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
@@ -7,6 +8,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("signing")
     id("maven-publish")
+    id("org.jreleaser") version "1.16.0"
 }
 
 group = "io.github.manuelarte"
@@ -61,9 +63,14 @@ tasks.getByName<Jar>("jar") {
     enabled = true
 }
 
+tasks.javadoc {
+    if (JavaVersion.current().isJava9Compatible) {
+        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    }
+}
+
 publishing {
     publications {
-
         create<MavenPublication>("mavenJava") {
             groupId = groupId
             artifactId = artifactId
@@ -104,19 +111,11 @@ publishing {
     }
     repositories {
         maven {
-            val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+            url = uri(layout.buildDirectory.dir("staging-deploy"))
         }
     }
 }
 
 signing {
     sign(publishing.publications["mavenJava"])
-}
-
-tasks.javadoc {
-    if (JavaVersion.current().isJava9Compatible) {
-        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
-    }
 }

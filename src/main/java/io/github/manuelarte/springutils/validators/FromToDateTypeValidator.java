@@ -93,6 +93,7 @@ public class FromToDateTypeValidator implements ConstraintValidator<FromAndToDat
   }
 
   @lombok.SneakyThrows
+  @SuppressWarnings("unchecked")
   private Comparable<Object> getValue(final Object entity, final Field field) {
     field.setAccessible(true);
     return (Comparable<Object>) field.get(entity);
