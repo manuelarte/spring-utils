@@ -3,6 +3,7 @@ package com.github.manuelarte.springutils.integrationtests.validators;
 import com.github.manuelarte.springutils.integrationtests.exampleapp.MyExampleApp;
 import com.github.manuelarte.springutils.integrationtests.exampleapp.models.ExampleEntity;
 import com.github.manuelarte.springutils.integrationtests.exampleapp.repositories.ExampleEntityRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +25,11 @@ public class ITExistsValidatorTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
+
+    @AfterEach
+    void tearDown() {
+        this.repository.deleteAll();
+    }
 
     @Test
     void testExistsOnNotExistingPathVariable() {
