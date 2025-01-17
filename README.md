@@ -5,13 +5,20 @@
 Add the following dependency in your project to start using the features described below.
 
 <details>
-<summary>Gradle</summary>
+<summary>Gradle Kotlin</summary>
 
 ```
-implementation 'io.github.manuelarte.spring-utils:{latest-version}'
+implementation("com.github.manuelarte.spring-utils:{latest-version}")
 ```
 </details>
-[source,bash]
+
+<details>
+<summary>Gradle Groovy</summary>
+
+```
+implementation 'com.github.manuelarte.spring-utils:{latest-version}'
+```
+</details>
 
 ## Overview
 
@@ -19,14 +26,9 @@ Some helpful validations and utilities to be used in your [Spring Boot][spring-b
 
 Check the features list below.
 
-### Prerequisites
-
-- Java 8 or above
-- Spring Data
-
 ## Features
 
-### Exists Constraint
+### @Exists Constraint
 
 The `@Exists` constraint can be used to **check if the entity exists before executing the method**. It checks whether the repository contains an entity with the specified id.
 This allows you to abstract the validation logic from the business logic.
@@ -39,7 +41,7 @@ This allows you to abstract the validation logic from the business logic.
 
 #### Example
 
-Here there is an example of a controller that gets a Document by id. The @Exists contrains check whether the id exists before executing the method.
+Here there is an example of a controller that gets a Document by id. The @Exists constrains check whether the id exists before executing the method.
 
 ```java
 @Validated
