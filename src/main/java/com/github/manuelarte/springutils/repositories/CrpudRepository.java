@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@inheritDoc}
+ * Repository adding partial save
  */
 @NoRepositoryBean
 public interface CrpudRepository<T, Id> extends CrudRepository<T, Id> {
