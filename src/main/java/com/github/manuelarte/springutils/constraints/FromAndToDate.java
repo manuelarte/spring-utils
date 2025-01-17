@@ -2,10 +2,11 @@ package com.github.manuelarte.springutils.constraints;
 
 import com.github.manuelarte.springutils.validators.FromToDateCrossParameterValidator;
 import com.github.manuelarte.springutils.validators.FromToDateTypeValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.ConstraintTarget;
+import jakarta.validation.Payload;
 
-import javax.validation.Constraint;
-import javax.validation.ConstraintTarget;
-import javax.validation.Payload;
+
 import java.lang.annotation.*;
 
 @Documented

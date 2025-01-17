@@ -3,12 +3,12 @@ package com.github.manuelarte.springutils.validators;
 import com.github.manuelarte.springutils.constraints.FromAndToDate;
 import com.github.manuelarte.springutils.constraints.fromto.FromDate;
 import com.github.manuelarte.springutils.constraints.fromto.ToDate;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.ReflectionUtils;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;

@@ -1,15 +1,15 @@
 package com.github.manuelarte.springutils.validators;
 
 import com.github.manuelarte.springutils.constraints.FromAndToDate;
+import jakarta.validation.ConstraintTarget;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.Payload;
+import jakarta.validation.groups.Default;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import javax.validation.ConstraintTarget;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.Payload;
-import javax.validation.groups.Default;
 import java.lang.annotation.Annotation;
 import java.time.LocalDate;
 import java.util.Date;

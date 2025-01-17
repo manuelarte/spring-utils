@@ -1,15 +1,15 @@
 package com.github.manuelarte.springutils.validators;
 
 import com.github.manuelarte.springutils.constraints.FromAndToDate;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.constraintvalidation.SupportedValidationTarget;
+import jakarta.validation.constraintvalidation.ValidationTarget;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraintvalidation.SupportedValidationTarget;
-import javax.validation.constraintvalidation.ValidationTarget;
 import java.time.temporal.Temporal;
 import java.util.Date;
 
@@ -17,7 +17,7 @@ import java.util.Date;
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @lombok.RequiredArgsConstructor
-public class FromToDateCrossParameterValidator implements ConstraintValidator<FromAndToDate, Object[]>  {
+public class FromToDateCrossParameterValidator implements ConstraintValidator<FromAndToDate, Object[]> {
 
   private FromAndToDate.FromToType fromToType;
   private int[] paramIndex;
