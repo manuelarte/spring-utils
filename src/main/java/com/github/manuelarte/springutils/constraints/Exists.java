@@ -14,11 +14,15 @@ import java.lang.annotation.*;
 public @interface Exists {
 
   /**
-   * The entity class to check if it exists. It needs to have a Repository interface also.
+   * The entity/document class to check whether it exists. There should be a @Repository bean linked to the @Entity/@Document.
    * @return the entity that is going to be checked in the repository.
    */
   Class<?> value();
 
+  /**
+   * The constraint validation message to be shown in case the constraint fails
+   * @return the error message to be shown
+   */
   String message() default "Entity not found";
 
   Class<?>[] groups() default {};
