@@ -156,3 +156,9 @@ Extension for the [Spring Data Repository](https://docs.spring.io/spring-data/jp
 Feel free to create a PR or suggest improvements or ideas.
 
 [spring-boot](https://spring.io/projects/spring-boot)
+
+## Publish
+
+To publish a new version use:
+
+> ./gradlew publish

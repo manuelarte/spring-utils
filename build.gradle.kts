@@ -1,3 +1,4 @@
+import org.jreleaser.model.Active
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
@@ -5,13 +6,17 @@ plugins {
     id("java-library")
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
+    id("signing")
     id("maven-publish")
+    id("org.jreleaser") version "1.16.0"
 }
 
-group = "com.github.manuelarte"
+group = "io.github.manuelarte"
 version = "0.0.1"
 
 java {
+    withJavadocJar()
+    withSourcesJar()
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
@@ -58,17 +63,27 @@ tasks.getByName<Jar>("jar") {
     enabled = true
 }
 
+tasks.javadoc {
+    if (JavaVersion.current().isJava9Compatible) {
+        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    }
+}
+
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("mavenJava") {
             groupId = groupId
             artifactId = artifactId
-            version = version
-
             from(components["java"])
-        }
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
 
-        create<MavenPublication>("mavenJava") {
             pom {
                 name = "Spring-Utils"
                 description = "Spring Boot utility features"
@@ -94,4 +109,13 @@ publishing {
             }
         }
     }
+    repositories {
+        maven {
+            url = uri(layout.buildDirectory.dir("staging-deploy"))
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications["mavenJava"])
 }
