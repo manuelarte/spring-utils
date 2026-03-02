@@ -8,7 +8,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("signing")
     id("maven-publish")
-    id("org.jreleaser") version "1.21.0"
+    id("org.jreleaser") version "1.23.0"
 }
 
 group = "io.github.manuelarte"
